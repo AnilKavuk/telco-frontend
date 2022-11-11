@@ -1,0 +1,75 @@
+<div class="container my-5">
+
+  <div class="my-2" style="display: flex; justify-content: space-between; align-items: center;">
+
+    <!-- <div class="dropdown">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Customer Type
+      </button> -->
+    <div style="display: flex;">
+      <h4 class="mx-3 mb-3">Filter By</h4>
+      <button class="btn btn-light" [ngClass]="{ active: selectedCustomer }" (click)="getIndividualCustomers()">
+        Individual Customers
+      </button>
+      <button class="btn btn-light" [ngClass]="{ active: !selectedCustomer }" (click)="getCorporateCustomers()">
+        Corporate Customers
+      </button>
+    </div>
+    <div>
+      <button class="btn btn-success" (click)="goToAddCustomerPage()">Create Customer</button>
+    </div>
+  </div>
+
+  <form class="mb-5" *ngIf="selectedCustomer">
+    <label class="mx-2">Name:</label><input type="text" name="customerName" [(ngModel)]="customerName" />
+    <label class="mx-2">National Identity:</label><input type="text" name="nationalId" [(ngModel)]="nationalId" />
+    <label class="mx-2">Birthday:</label><input type="date" name="dateOfBirth" [(ngModel)]="dateOfBirth" />
+  </form>
+
+  <div class="row" *ngIf="selectedCustomer">
+    <div class="col-sm-12 col-md-4 col-lg-3 mb-5" *ngFor="
+        let individualCustomer of individuals
+          | filterService: 'name':customerName
+          | filterService: 'id':nationalId
+          | filterService: 'birthDay':dateOfBirth
+      " [routerLink]="'/customer-detail/' + individualCustomer.customerId">
+      <div class="card">
+        <img src="assets/images/img_avatar.png" alt="Avatar" width="auto" height="auto" />
+        <div class="mt-2" style="text-align: center">
+          <h4>
+            <b>{{ individualCustomer.firstName }}
+              {{ individualCustomer.lastName }}</b>
+          </h4>
+          <p>
+            National Identity : {{individualCustomer.nationalIdentity}} <br>
+            Birthday : {{individualCustomer.dateOfBirth | date:'dd.MM.YYYY'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form class="mb-5" *ngIf="!selectedCustomer">
+    <label class="mx-2">CompanyName:</label><input type="text" name="companyName" [(ngModel)]="companyName" />
+    <label class="mx-2">Tax Number:</label><input type="text" name="taxNumber" [(ngModel)]="taxNumber" />
+  </form>
+  <div class="row" *ngIf="!selectedCustomer">
+    <div class="col-sm-12 col-md-4 col-lg-3 mb-5" *ngFor="
+        let corporateCustomer of corporates
+          | filterCorporateCustomers: 'companyName':companyName
+          | filterCorporateCustomers: 'tax':taxNumber
+      " [routerLink]="'/customer-detail/' + corporateCustomer.customerId">
+      <div class="card">
+        <img  src="assets/images/corporate-avatar.png" alt="Avatar" width="auto" height="auto" />
+        <div  style="text-align: center" >
+          <h4>
+            <b>{{ corporateCustomer.companyName }}</b>
+          </h4>
+          <p>
+            Tax Number : {{corporateCustomer.taxNumber}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

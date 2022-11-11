@@ -1,0 +1,19 @@
+<form [formGroup]="inputForm">
+  <div>
+    <input formControlName="name" type="text" id="name" [(ngModel)]="name" />
+    <p *ngIf="inputForm.get('name')?.hasError('required')"> Ürün adı zorunludur </p>
+  </div>
+  <div>
+    <button (click)="addProducts(name)" [disabled]="inputForm.invalid">Ekle</button>
+  </div>
+</form>
+
+<ul>
+  <ng-container *ngFor="let item of products;let i = index">
+    <div style="display: flex;">
+      <li>{{ i + 1 }}-{{ item }}</li>
+      <button class="xBtn" (click)="deleteProduct(item)">X</button>
+    </div>
+  </ng-container>
+
+</ul>

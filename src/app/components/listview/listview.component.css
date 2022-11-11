@@ -1,0 +1,68 @@
+button{
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+input{
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+ul {
+  background: #3399ff;
+  padding: 20px;
+}
+ul li {
+  background: #cce5ff;
+  color: darkblue;
+  margin: 5px;
+  list-style-type: none;
+  display: inline-block;
+  padding: 5px;
+}
+.editBtn{
+  padding: 8px 16px;
+  background-color: blue;
+}
+.title{
+  width: 30%;
+}
+.desc{
+  width: 60%;
+}
+.addForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h3{
+  text-align: center;
+}
+.addFormBtn{
+  display: flex;
+  justify-content: center;
+}
+.err{
+  color: red;
+  font-size: large;
+  font-weight: 800;
+}
+@media only screen and (max-width:1305px) {
+  .title{
+    width: 20%;
+  }
+  .desc{
+    width: 60%;
+  }
+
+}
+@media screen and (max-width: 682px) {
+  ul li {
+    width: auto;
+  }
+}

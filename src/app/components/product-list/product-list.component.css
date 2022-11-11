@@ -1,0 +1,39 @@
+form{
+  display: flex;
+}
+form input{
+  height: 20px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+form button{
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+p{
+  margin: 0;
+  padding: 0;
+  color: red;
+}
+label{
+  margin-right: 10px;
+}
+.ng-invalid:not(form)  {
+  border: 1px solid red; /* red */
+}
+li{
+  width: 15%;
+  list-style-type: none;
+}
+.xBtn{
+  border: none;
+  background-color: rgb(160, 26, 26);
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 5px;
+}

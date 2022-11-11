@@ -1,0 +1,40 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: auto;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+  transform: scale(1.05);
+}
+.active {
+  background-color: #666;
+  color: white;
+}
+label,input{
+  margin-right: 10px;
+}
+input{
+  border:1px solid rgb(78, 78, 78);
+  border-radius: 10px;
+  width: 50%;
+  height: 40px;
+}
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 500px) {
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+  button{
+    margin-top: 10px;
+  }
+}
+

@@ -1,0 +1,32 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px">
+          <div class="card-body p-4 p-md-5">
+            <hr class="solid">
+            <form [formGroup]="serviceForm">
+              <div class="row">
+                <div class="col-lg-6" *ngFor="let service of services">
+                  <label class="services">{{service.name}}
+                    <input type="checkbox" formArrayName="selectedServices" [value]="service.name"
+                      (change)="onCheckboxChange($event)" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </form>
+            <div style="display: flex; justify-content: space-between;">
+              <div class="mt-4 pt-2">
+                <button class="btn btn-primary btn-lg" (click)="goBackForm()">Back</button>
+              </div>
+              <div class="mt-4 pt-2">
+                <button class="btn btn-success btn-lg" (click)="goNextForm()">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

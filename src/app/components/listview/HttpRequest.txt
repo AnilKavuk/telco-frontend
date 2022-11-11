@@ -1,0 +1,50 @@
+
+-HTTP’nin açılımı, HyperText Transfer Protocol’dür. Bu protokol bir sunucu (server) ile bir istemci (client) arasındaki haberleşemeye olanak sağlayan, tanımlanmış kurallar bütünüdür.
+
+-HTTP isteği (HTTP request), sunucuda bir eylem başlatmak ve erişilmek istenilen kaynağı yüklemek için ihtiyaç duyulan kaynakların yüklenebilmesi için istemci ( kullanıcı aracısı) tarafından gönderilen mesajlardır.
+
+
+*HTTP Metotları
+  HTTP sunucuya yapılacak olan isteğin tipini belirlemek için sekiz farklı method kullanır (HTTP Methods). Bu metotlara aynı zamanda HTTP Fiilleri de denir (HTTP Verbs).
+
+**Genel Metotlar aşağıdaki gibidir.
+
+  Get: Sunucuda halihazırda bulunan bir kaynağa erişim için kullanılır.
+
+  Post: Sunucu üzerinde yeni bir kaynak oluşturmak için kullanılır. Post istekleri genellikle yeni oluşturulacak kaynağa ait bilgiyi de taşırlar.
+
+  Put: Sunucudaki bir kaynağı güncellemek için kullanılır. Bu istekler de genellikle üzerilerinde değiştirilmek istenen bilgiyi taşırlar.
+
+  Patch: Bu metot da sunucudaki bir kaynağı değiştirmek için kullanılır. Put ile arasındaki fark ise Put sunucudaki kaynağı yeni bir kaynak ile değiştirmek için kullanılır iken, Patch bu kaynağında bir kısmını değiştirmeye yarar.
+
+  Delete: Sunucudaki bir kaynağı silmeye yarar.
+
+  Connect: Sunucu ile bir bağlantı oluşturma isteği gönderir. Sunucu bağlantılarını minimum yük ile test etme olanağı sağlar.
+
+  Head: Sunucuya aynı Get metodu gibi ancak sadece başlığı olan (Request Header), gövdesi olmayan(Request Body) bir istek gönderir. Genellikle sunucuda bir kaynak mevcut mu veya kaynağın en son güncellenme bilgisi için kullanılır.
+
+  Options: Sunucunun desteklediği metotları kontrol etmek için kullanılır.
+
+  Trace: Bu metod ile bir sunucuya istek gönderdiğinizde, aradaki tüm vekil sunucular (Proxy, Gateway) isteğin başlığına kendi IP veya DNS biglilerini eklerler. Genellikle hata ayıklama/bakım işleri için kullanılır.
+
+**HTTP Durum Kodları
+
+  1xx Bilgi Mesajları: HTTP 1.1 versiyonunu destekleyen istemciler bu mesajları alabilirler. Tamamen geçici bilgilendirme amaçlı mesajlardır.
+
+  Ör: 100 — Continue; Şu ana kadar herşey iyi, istek göndermeye devam edebilirsin.
+
+  2xx Başarı Mesajları: Bir eylemin başarılı olduğunu belirten mesajlardır.
+
+  Ör: 200 — OK; Başarılı geri dönüş mesajları isteğe göre anlam kazanır. Get istekleri karşılığında dönen 200 kodlu mesaj, kaynak bulundu ve geri döndürüldü anlamına gelirken, Head istekleri karşılığı gelen 200 kodlu mesaj kaynak ile bilgileri başlıkta bulabilirsin anlamına gelir.
+
+  3xx Yönlendirme Mesajları: Bu mesaj serisi istemcinin, istenen kaynağa ulaşmak için daha fazla eyleme ihtiyaç duyacağını belirtir.
+
+  Ör: 301 — Moved Permanently; İstenen kaynak kalıcı olarak başka bir URL e yönlendirildi.
+
+  4xx İstemci Hata Mesajları: Bu mesajlar sunucuya yapılan isteğin hata içerdiğini ve isteğin karşılanamayacağını belirtir.
+
+  Ex: 404 — Not Found; En çok bilinen durum mesajlarından bir tanesidir. İstenen kaynak bulunamadı anlamına gelir.
+
+  5xx Sunucu Hata Mesajları: Bu mesaj serisi sunucu tarafında bir hata olduğunu ve sunucunun isteği karşılayamayacağını belirtir.
+
+  Ex:500 — Internal Server Error: Sunucu tarafında beklenmeyen bir hata oluştu.

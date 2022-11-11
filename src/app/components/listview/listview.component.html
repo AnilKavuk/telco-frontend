@@ -1,0 +1,31 @@
+<!-- <ul *ngIf="categories">
+  <ng-template ngFor let-item [ngForOf]="categories">
+    <li *ngIf="item.name.length > 3 ">{{item.name}}</li>
+  </ng-template>
+</ul> -->
+
+<ul>
+  <ng-container *ngFor="let item of categories; let i=index">
+    <li class="title" *ngIf="item.name.length >3 ">{{ i + 1 }}-{{item.name}}</li>
+    <li class="desc">{{item.description}}</li>
+    <button class="editBtn" (click)="editCategory(item)">Edit</button>
+  </ng-container>
+</ul>
+
+
+<!-- Reactive Form -->
+<h3>{{formTitle}}</h3>
+<p class="err">{{error}}</p>
+<form class="addForm" [formGroup]="categoryAddForm" (submit)="addOrUpdateCategory()">
+  <input formControlName="name" type="text" placeholder="Enter name" />
+  <input formControlName="description" type="text" placeholder="Enter description" />
+  <button type="submit" class="addFormBtn">{{formButton}}</button>
+</form>
+
+<!-- ngModel Form Two way data binding-->
+<h3>Form Delete</h3>
+<div>
+  <input type="text" placeholder="id" name="categoryIdToDelete" [(ngModel)]="categoryIdToDelete" />
+  <button (click)="delete()">Delete</button>
+</div>
+{{categoryIdToDelete}}

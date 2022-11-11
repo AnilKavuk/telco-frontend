@@ -1,0 +1,74 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+  </div>
+
+  <section class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center mb-5">
+          <h1 class="display-4">Services</h1>
+          <p class="lead">
+            Lorem ipsum dolor sit amet at enim hac integer volutpat maecenas
+            pulvinar.
+          </p>
+          <h3>Add Service</h3>
+          <form class="addForm" [formGroup]="serviceAddForm">
+            <input formControlName="name" class="addInputText" type="text" />
+            <button class="btn btn-primary" (click)="add()">Add</button>
+
+          </form>
+          <div *ngIf="error" class="alert alert-danger" role="alert" style="text-align: center;">
+            {{ error }}
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <ng-container *ngFor="let service of services">
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+            <div
+              class="card text-white card-has-bg click-col"
+              style="
+                background-image: url('https://cdn.webrazzi.com/uploads/2021/08/etiya-222.png');
+              "
+            >
+              <img
+                class="card-img d-none"
+                src="https://cdn.webrazzi.com/uploads/2021/08/etiya-222.png"
+                alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?"
+              />
+              <div class="card-img-overlay d-flex flex-column">
+                <div class="card-body">
+                  <div style="display: flex; justify-content: space-between">
+                    <button class="btn btn-success" (click)="edit(service)">
+                      Edit
+                    </button>
+                    <button class="btn btn-danger" (click)="delete(service.id)">
+                      X
+                    </button>
+                  </div>
+                  <h4 class="card-title mt-5">
+                    <h3 class="text-white">{{ service.name }}</h3>
+                    <input
+                      *ngIf="isEdit && editID === service.id"
+                      type="text"
+                      value="{{ service.name }}"
+                      [(ngModel)]="editName"
+                    />
+                    <button
+                      class="btn btn-primary"
+                      *ngIf="isEdit && editID === service.id"
+                      (click)="update()"
+                    >
+                      Update
+                    </button>
+                  </h4>
+                  <!-- <small><i class="far fa-clock"></i> October 15, 2020</small> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>

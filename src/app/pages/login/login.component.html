@@ -1,0 +1,80 @@
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img
+          src="assets/images/network.jpg"
+          class="img-fluid"
+          alt="Sample image"
+        />
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="loginForm">
+          <h3 class="mb-3">Giriş Yap</h3>
+          <div class="form-outline mb-4">
+            <input
+              formControlName="userName"
+              type="text"
+              id="form3Example3"
+              class="form-control form-control-lg"
+              placeholder="Enter username"
+            />
+            <div
+              *ngIf="
+                loginForm.get('userName')?.hasError('required') &&
+                (loginForm.dirty || loginForm.touched)
+              "
+              class="alert alert-danger"
+              role="alert"
+            >
+              Username is required
+            </div>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input
+              formControlName="password"
+              form
+              type="password"
+              id="form3Example4"
+              class="form-control form-control-lg"
+              placeholder="Enter password"
+            />
+            <div
+              *ngIf="
+                loginForm.get('password')?.hasError('required') &&
+                (loginForm.dirty || loginForm.touched)
+              "
+              class="alert alert-danger"
+              role="alert"
+            >
+              Password is required
+            </div>
+            <div
+              *ngIf="
+                loginForm.get('password')?.hasError('minlength') &&
+                (loginForm.dirty || loginForm.touched)
+              "
+              class="alert alert-danger"
+              role="alert"
+            >
+              Password must be minimum 4 length
+            </div>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem"
+              (click)="login()"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
